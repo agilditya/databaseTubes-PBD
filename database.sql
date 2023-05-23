@@ -229,5 +229,4 @@ INSERT INTO 'Pembayaran' ('Transaksi_id', 'biayaPembayaran', 'Invoice') VALUES
 (29, 130, 'INV-029'),
 (30, 85, 'INV-030');
 
-
-
+DROP TABLE IF EXISTS 'Merchant'
