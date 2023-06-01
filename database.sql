@@ -187,46 +187,79 @@ VALUES
   (29, 'Bank C', 12.80, 10029),
   (30, 'Bank D', 5.50, 10030);
 
-DROP TABLE IF EXISTS 'Pembayaran';
 
-CREATE TABLE 'Pembayaran' (
-  'Transaksi_id' INT PRIMARY KEY,
-  'biayaPembayaran' INT,
-  'Invoice' VARCHAR(100),
-   KEY `Transaksi_id` (`Transaksi_id`),
-  CONSTRAINT `Pembayaran_ibfk_1` FOREIGN KEY (`Transaksi_id`) REFERENCES `Transaksi`(`Transaksi_id`)
+DROP TABLE IF EXISTS Merchant;
+
+CREATE TABLE Merchant (
+  Merchant_id INT PRIMARY KEY,
+  Nama_merchant VARCHAR(50)
 );
 
-INSERT INTO 'Pembayaran' ('Transaksi_id', 'biayaPembayaran', 'Invoice') VALUES
-(1, 100, 'INV-001'),
-(2, 75, 'INV-002'),
-(3, 50, 'INV-003'),
-(4, 120, 'INV-004'),
-(5, 90, 'INV-005'),
-(6, 60, 'INV-006'),
-(7, 85, 'INV-007'),
-(8, 110, 'INV-008'),
-(9, 70, 'INV-009'),
-(10, 95, 'INV-010'),
-(11, 80, 'INV-011'),
-(12, 115, 'INV-012'),
-(13, 55, 'INV-013'),
-(14, 130, 'INV-014'),
-(15, 90, 'INV-015'),
-(16, 75, 'INV-016'),
-(17, 100, 'INV-017'),
-(18, 85, 'INV-018'),
-(19, 120, 'INV-019'),
-(20, 70, 'INV-020'),
-(21, 95, 'INV-021'),
-(22, 80, 'INV-022'),
-(23, 105, 'INV-023'),
-(24, 65, 'INV-024'),
-(25, 90, 'INV-025'),
-(26, 75, 'INV-026'),
-(27, 100, 'INV-027'),
-(28, 55, 'INV-028'),
-(29, 130, 'INV-029'),
-(30, 85, 'INV-030');
+INSERT INTO Merchant (Merchant_id, Nama_merchant) VALUES
+(1, 'Merchant A'),
+(2, 'Merchant B'),
+(3, 'Merchant C'),
+(4, 'Merchant D'),
+(5, 'Merchant E'),
+(6, 'Merchant F'),
+(7, 'Merchant G'),
+(8, 'Merchant H'),
+(9, 'Merchant I'),
+(10, 'Merchant J'),
+(11, 'Merchant K'),
+(12, 'Merchant L'),
+(13, 'Merchant M'),
+(14, 'Merchant N'),
+(15, 'Merchant O'),
+(16, 'Merchant P'),
+(17, 'Merchant Q'),
+(18, 'Merchant R'),
+(19, 'Merchant S'),
+(20, 'Merchant T');
 
-DROP TABLE IF EXISTS 'Merchant'
+DROP TABLE IF EXISTS Pembayaran;
+
+CREATE TABLE Pembayaran (
+  Transaksi_id INT,
+  Merchant_id INT,
+  biayaPembayaran INT,
+  Invoice VARCHAR(100),
+  PRIMARY KEY (Transaksi_id),
+  CONSTRAINT transaksi_fk FOREIGN KEY (Transaksi_id) REFERENCES Transaksi(Transaksi_id),
+  CONSTRAINT merchant_fk FOREIGN KEY (Merchant_id) REFERENCES Merchant(Merchant_id)
+);
+
+
+
+INSERT INTO Pembayaran (Transaksi_id, Merchant_id, biayaPembayaran, Invoice)
+VALUES
+(1, 1, 10000, 'INV-001'),
+(2, 2, 15000, 'INV-002'),
+(3, 1, 20000, 'INV-003'),
+(4, 3, 12000, 'INV-004'),
+(5, 2, 18000, 'INV-005'),
+(6, 1, 9000, 'INV-006'),
+(7, 3, 17000, 'INV-007'),
+(8, 2, 13000, 'INV-008'),
+(9, 1, 11000, 'INV-009'),
+(10, 3, 16000, 'INV-010'),
+(11, 2, 14000, 'INV-011'),
+(12, 1, 9500, 'INV-012'),
+(13, 3, 19000, 'INV-013'),
+(14, 2, 12500, 'INV-014'),
+(15, 1, 10500, 'INV-015'),
+(16, 3, 15500, 'INV-016'),
+(17, 2, 13500, 'INV-017'),
+(18, 1, 8800, 'INV-018'),
+(19, 3, 17500, 'INV-019'),
+(20, 2, 11500, 'INV-020'),
+(21, 1, 9800, 'INV-021'),
+(22, 3, 14500, 'INV-022'),
+(23, 2, 16500, 'INV-023'),
+(24, 1, 10000, 'INV-024'),
+(25, 3, 15000, 'INV-025'),
+(26, 2, 20000, 'INV-026'),
+(27, 1, 12000, 'INV-027'),
+(28, 3, 18000, 'INV-028'),
+(29, 2, 9000, 'INV-029'),
+(30, 1, 17000, 'INV-030');
