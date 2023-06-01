@@ -2,7 +2,7 @@
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`Ollabank` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `Ollabank`;
-SET foreign_key_checks = 0;
+
 
 
 DROP TABLE IF EXISTS `Akun`;
